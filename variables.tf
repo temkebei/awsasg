@@ -16,12 +16,13 @@ variable "ami" {
     
 }
 
+/*
 variable "user_data" {
   description = "The user data to provide when launching the instance"
   type        = string
   default     = null
 }
-
+*/
 variable "instance_type" {
   description = "The instance type of the EC2 to be launched by the ASG"
   type        = string
