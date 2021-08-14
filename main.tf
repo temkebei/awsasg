@@ -3,7 +3,7 @@ resource "aws_launch_template" "foobar" {
   image_id      = var.ami
   instance_type = var.instance_type
   vpc_security_group_ids = var.security_group_ids
-  user_data = <<-EOF
+  user_data = <<EOF
               #!/bin/bash
               sudo su
               yum -y install httpd
