@@ -15,7 +15,7 @@ resource "aws_launch_template" "foobar" {
   instance_type = var.instance_type
   vpc_security_group_ids = var.security_group_ids
   key_name = "Kebei"
-  user_data = "${base64encode(data.template_file.test.rendered)}"
+  user_data = base64encode(data.template_file.test.rendered)
 }
 
 resource "aws_autoscaling_group" "bar" {
