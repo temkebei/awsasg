@@ -3,6 +3,7 @@ resource "aws_launch_template" "foobar" {
   image_id      = var.ami
   instance_type = var.instance_type
   vpc_security_group_ids = var.security_group_ids
+  user_data = var.user_data
 }
 
 resource "aws_autoscaling_group" "bar" {
@@ -15,6 +16,6 @@ resource "aws_autoscaling_group" "bar" {
     id      = aws_launch_template.foobar.id
     version = "$Latest"
   }
-  user_data = var.user_data
+  
   target_group_arns = var.target_group_arns
 }
