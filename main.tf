@@ -1,12 +1,12 @@
 data "template_file" "test" {
   template = <<EOF
-             #!/bin/bash
-             sudo su
-             yum -y install httpd
-             echo "<p> Hello My web server is running! </p>" >> /var/www/html/index.html
-             sudo systemctl enable httpd
-             sudo systemctl start httpd
-             EOF
+    #!/bin/bash
+    sudo su
+    yum -y install httpd
+    echo "<p> Hello My web server is running! </p>" >> /var/www/html/index.html
+    sudo systemctl enable httpd
+    sudo systemctl start httpd
+    EOF
 }
 
 resource "aws_launch_template" "foobar" {
@@ -14,6 +14,7 @@ resource "aws_launch_template" "foobar" {
   image_id      = var.ami
   instance_type = var.instance_type
   vpc_security_group_ids = var.security_group_ids
+  key_name = "Kebei"
   user_data = "${base64encode(data.template_file.test.rendered)}"
 }
 
